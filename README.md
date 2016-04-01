@@ -7,6 +7,9 @@ Created because the built in editor is kind of crappy, so this is in the future 
 Controls for adding/deleting objects are the same as in GameMaker.
 F5 tests levels. (Need to add easy way to continue editing).
 
+Levels are saved in C:/Users/YourUser/AppData/Local/NameOfProjectThatThisIsEmbededIn
+
+
 -------TODO LIST-------
 Transformation of objects,
 Bucket fill and line fill,
