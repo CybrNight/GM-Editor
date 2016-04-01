@@ -11,6 +11,8 @@ Levels are saved in C:/Users/YourUser/AppData/Local/NameOfProjectThatThisIsEmbed
 
 
 -------TODO LIST-------
-Transformation of objects,
-Bucket fill and line fill,
-Tile support,
+Transformation of objects
+Bucket fill and line fill
+Tiles support
+Views support
+Proper room properties changing and saving
