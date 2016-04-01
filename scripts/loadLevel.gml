@@ -13,13 +13,13 @@ clearObjs();
 clearTiles();
 
 //Load Room Attributes
-ini_open(name+'/attributes.dat')
+ini_open('Levels/'+name+'/attributes.dat')
 var length = ini_read_real('Attributes','numOfObjs',-1);
 show_debug_message(string(length));
 ini_close();
 
 //Load Objects
-ini_open(name+'/objects.dat');
+ini_open('Levels/'+name+'/objects.dat');
 
 for (var a = 0; a < length; a++){
     sec = string(a);

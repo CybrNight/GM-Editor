@@ -42,7 +42,7 @@ if (name == '' || name == 'this') exit;
 global.loadedLevel = name;
 
 //Save Objcts
-ini_open(name+'/objects.dat');
+ini_open('Levels/'+name+'/objects.dat');
 
 var numOfObjs = ds_list_size(global.object);
 for (var a = 0; a < numOfObjs; a++){
@@ -59,11 +59,11 @@ for (var a = 0; a < numOfObjs; a++){
 ini_close();
 
 //Save Level Data
-ini_open(name+'/attributes.dat');
+ini_open('Levels/'+name+'/attributes.dat');
 ini_write_real('Attributes','numOfObjs',numOfObjs);
 ini_close();
 
-ini_open(name+'/tiles.dat');
+ini_open('Levels/'+name+'/tiles.dat');
 //Save Tiles ---WIP---
 var numOfTiles = ds_list_size(global.tileBackground);
 for (var a = 0; a < numOfTiles; a++){
