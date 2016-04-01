@@ -9,8 +9,8 @@ for (var a = 0; a < length; a++){
     
     if (xxx = xx && yyy = yy){
         ds_list_delete(global.object,a);
-        ds_list_delete(global.xx,a);
-        ds_list_delete(global.yy,a);
+        ds_list_delete(global.objX,a);
+        ds_list_delete(global.objY,a);
         
         position_destroy(xx,yy);
     }

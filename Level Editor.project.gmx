@@ -22,6 +22,11 @@
       <script>scripts\delObj.gml</script>
       <script>scripts\clearObjs.gml</script>
     </scripts>
+    <scripts name="tile.handling">
+      <script>scripts\addTile.gml</script>
+      <script>scripts\delTile.gml</script>
+      <script>scripts\clearTiles.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_editor</object>

@@ -34,23 +34,23 @@ var wheelDown = -mouse_wheel_down();
 
 var wheel = wheelUp + wheelDown;
 
-res += wheel
+obj += wheel
 
-if (res &gt; array_length_2d(resources,0)-1) res = 0;
-else if (res &lt; 0) res = array_length_2d(resources,0)-1;
+if (obj &gt; array_length_2d(objects,0)-1) obj = 0;
+else if (obj &lt; 0) obj = array_length_2d(objects,0)-1;
 
 //Add Object
     
     //Single
     if (mouse_check_button_pressed(mb_left) &amp;&amp; position_empty(mx,my)){
-        addObj(mx,my,resources[res,0]);
+        addObj(mx,my,objects[obj,0]);
     }
 
     
     //Multiple
     if (mouse_check_button(mb_left) &amp;&amp; position_empty(mx,my)){
         if (keyboard_check(vk_lshift) &amp;&amp; keyboard_check(vk_lcontrol)){
-            addObj(mx,my,resources[res,0]);
+            addObj(mx,my,objects[obj,0]);
         }
     }
         
@@ -85,30 +85,20 @@ if (keyboard_check(vk_lcontrol)){
 //Open Level
 if (keyboard_check(vk_lcontrol)){
     if (keyboard_check_pressed(ord('O'))){
-        loadLevel(get_string('Enter Level To Load','')+'.dat');
+        loadLevel(get_string('Enter Level To Load',''));
     }
 }
 
 //Delete Level
 if (keyboard_check(vk_lcontrol)){
     if (keyboard_check_pressed(vk_delete)){
-        deleteLevel(get_string('Enter Level To Delete','')+'.dat');
-    }
-}
-
-//Make Sure Level Still Exists
-if (global.loadedLevel != 'none'){
-    if (!file_exists(global.loadedLevel)){
-        show_message("Level: "+global.loadedLevel+' Does Not Exist.');
-        global.loadedLevel = 'none';
-        clearObjs();
+        deleteLevel(get_string('Enter Level To Delete',''));
     }
 }
 
 //Test Level
-if (keyboard_check_pressed(vk_f5)){
-    if (global.loadedLevel != 'none') room_goto(rm_test);
-    else show_message('No Saved Level/Loaded Level.');
+if (keyboard_check(vk_f5)){
+    room_goto(rm_test);
 }
 </string>
           </argument>
@@ -132,24 +122,39 @@ if (keyboard_check_pressed(vk_f5)){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Init Object For Editing
+            <string>///Init Room For Editing
+
+//Add Data Structures For Objects
 global.object = ds_list_create();
-global.xx = ds_list_create();
-global.yy = ds_list_create();
+global.objX = ds_list_create();
+global.objY = ds_list_create();
+
+//Add Data Structures For Tiles
+global.tileBackground = ds_list_create();
+global.tileL = ds_list_create();
+global.tileR = ds_list_create();
+global.tileW = ds_list_create();
+global.tileH = ds_list_create();
+global.tileX = ds_list_create();
+global.tileY = ds_list_create();
+global.tileDepth = ds_list_create();
 
 global.loadedLevel = 'none';
 
-//Add Resources to Array
+/*Add Objects to Arrays
+[0,0] = First Item, Object
+[0,1] = First Item, Sprite
+*/
 
-res = 0;
+obj = 0;
 
 //Wall
-resources[0,0] = obj_wallMarker;
-resources[0,1] = spr_wall;
+objects[0,0] = obj_wallMarker;
+objects[0,1] = spr_wall;
 
 //Player
-resources[1,0] = obj_playerMarker;
-resources[1,1] = spr_player;
+objects[1,0] = obj_playerMarker;
+objects[1,1] = spr_player;
 </string>
           </argument>
         </arguments>
@@ -175,7 +180,7 @@ resources[1,1] = spr_player;
             <string>///Draw Cursor
 draw_set_alpha(0.5);
 if (position_empty(mx,my)){
-    draw_sprite(resources[res,1],0,mx,my);
+    draw_sprite(objects[obj,1],0,mx,my);
 }
 draw_set_alpha(1);
 </string>
