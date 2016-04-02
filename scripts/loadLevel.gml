@@ -1,6 +1,6 @@
 var name = argument0;
 
-if (directory_exists(name)){
+if (directory_exists('Levels/'+name)){
     global.loadedLevel = name;
 }else{
     show_message(name+' Does Not Exist');

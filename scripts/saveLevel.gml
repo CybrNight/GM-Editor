@@ -1,37 +1,17 @@
 saveAs = argument0;
 
-/*if (directory_exists(global.loadedLevel) && !saveAs){
-    directory_destroy(global.loadedLevel);
+if (directory_exists('Levels/'+global.loadedLevel) && !saveAs){
+    file_delete('Levels/'+global.loadedLevel+'/objects.dat');
+    file_delete('Level/'+global.loadedLevel+'/attributes.dat');
     name = global.loadedLevel;
-}else if (!file_exists(global.loadedLevel) || saveAs){
+}else if (!directory_exists('Levels/'+global.loadedLevel) || saveAs){
     name = get_string('Enter Level Name','');
-    show_debug_message(global.loadedLevel + ' ' + string(saveAs));
-}
-
-if (name == '' || name == 'this') exit;
- 
-if (file_exists(name)){
-    choice = show_question('Level Already Exists. #Do You Want To Overwrite It?');
-    
-    if (choice){
-        file_delete(name);
-    }else{
-        exit;
-    }
-}*/
-
-if (directory_exists(global.loadedLevel) && !saveAs){
-    file_delete(global.loadedLevel+'/objects.dat');
-    file_delete(global.loadedLevel+'/attributes.dat');
-    name = global.loadedLevel;
-}else if (!directory_exists(global.loadedLevel) || saveAs){
-    name = get_string('Enter Level Name','');
-}else if (directory_exists(name)){
+}else if (directory_exists('Levels/'+name)){
     choice = show_question('Level Already Exits. #Do You Want To Overwrite It?');
 
     if (choice){
-        file_delete(global.loadedLevel+'/objects.dat');
-        file_delete(global.loadedLevel+'/attributes.dat');
+        file_delete('Levels/'+global.loadedLevel+'/objects.dat');
+        file_delete('Levels/'+global.loadedLevel+'/attributes.dat');
     }else{
         exit;
     }
